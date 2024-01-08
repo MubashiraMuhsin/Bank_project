@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Style the navigation bar */
+    ul.navbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    /* Style the navigation bar items */
+    ul.navbar li {
+      float: left;
+    }
+
+    /* Style the links inside the navigation bar */
+    ul.navbar li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    /* Change color on hover for navigation bar links */
+    ul.navbar li a:hover {
+      background-color: #555;
+    }
+
+    /* Style the dropdown menu */
+    ul.navbar li.dropdown {
+      display: inline-block;
+    }
+
+    /* Style the dropdown menu content */
+    ul.navbar .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    /* Style the dropdown menu links */
+    ul.navbar .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      display: block;
+      text-align: left;
+      text-decoration: none;
+    }
+
+    /* Change color on hover for dropdown menu links */
+    ul.navbar .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    /* Show the dropdown menu when hovering over its container */
+    ul.navbar li.dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Align "About Us" and "Contact" to the right */
+    ul.navbar li.right {
+      float: right;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation bar with a dropdown menu -->
+  <ul class="navbar">
+    <li><a href="#home">Home</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropbtn">Branches</a>
+      <div class="dropdown-content">
+        <a href="https://en.wikipedia.org/wiki/Kozhikode">Calicut</a>
+        <a href="https://en.wikipedia.org/wiki/Malappuram">Malappuram</a>
+          <a href="https://en.wikipedia.org/wiki/Thrissur">Thrissur</a>
+          <a href="https://en.wikipedia.org/wiki/Kollam">Kollam</a>
+          <a href="https://en.wikipedia.org/wiki/Thiruvananthapuram">Trivandrum</a>
+      </div>
+    </li>
+{% if username %}
+      <li class="right"><a href="#">Hello {{username}}</a></li>
+      <li class="right"><a href="{% url 'bank_app:logout' %}">Logout</a></li>
+      {% else %}
+      <li class="right"><a href="{% url 'bank_app:register' %}">Register</a></li>
+      <li class="right"><a href="{% url 'bank_app:index_login' %}">Login</a></li>
+{% endif %}
+  </ul>
+</body>
+</html>
